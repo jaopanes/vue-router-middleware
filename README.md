@@ -1,19 +1,3 @@
 # vue-router-middleware
 
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Criação de aplicação utilizando middlewares no vue-router, sem instalação de libs de terceiros. Feito para fim de testes tentanto simular um caso real. 

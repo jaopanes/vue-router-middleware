@@ -1,32 +1,73 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div class="container">
+    <router-view />
   </div>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-#nav {
-  padding: 30px;
+body {
+  background-color: #334257;
+  color: #fff;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+body,
+input,
+input::placeholder,
+button {
+  font-family: "Poppins", sans-serif;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+input,
+button {
+  outline: none;
+  border: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container > .card {
+  width: 100%;
+  max-width: 350px;
+  padding: 0 16px;
+  position: relative;
+}
+
+.card > .title-card {
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  width: 100%;
+  background-color: #548ca8;
+  color: #fff;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+  margin-top: 1.5rem;
+}
+
+.btn:hover {
+  box-shadow: 0 5px 20px rgba(84, 140, 168, 0.4);
+}
+.btn:active {
+  opacity: 0.8;
 }
 </style>
