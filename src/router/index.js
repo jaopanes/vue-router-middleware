@@ -11,11 +11,25 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/user',
-    name: 'User',
-    component: () => import(/* webpackChunkName: "privateuser" */ '../views/private/TheUser.vue'),
-    meta: {
-      middleware: [auth, log]
-    }
+    component: () => import(/* webpackChunkName: "layout" */ '../layout/TheLayout.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import(/* webackChunkName: "userhome" */ '../views/private/TheUser.vue'),
+        name: 'User',
+        meta: {
+          middleware: [auth, log]
+        }
+      },
+      {
+        path: 'configurations',
+        component: () => import(/* webackChunkName: "userconfigurations" */ '../views/private/TheConfigurations.vue'),
+        name: 'Configurations',
+        meta: {
+          middleware: auth
+        }
+      },
+    ]
   },
   {
     path: '/',
@@ -47,8 +61,9 @@ function nextFactory(context, middleware, index) {
 }
 
 router.beforeEach((to, from, next) => {
-  if (to.meta.middleware) {
-    const middleware = Array.isArray(to.meta.middleware) ? to.meta.middleware : [to.meta.middleware]
+  if (to.meta.middleware || to.matched.some(record => record.meta.middleware)) {
+    const fieldMiddleware = to.meta.middleware || to.matched.filter(record => record.meta.middleware)[0].meta.middleware
+    const middleware = Array.isArray(fieldMiddleware) ? fieldMiddleware : [fieldMiddleware]
 
     const context = {
       from, next, router, to

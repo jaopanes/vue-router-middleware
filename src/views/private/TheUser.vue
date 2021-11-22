@@ -1,10 +1,13 @@
 <template>
- 
-    <div class="card">
-      <h1 class="title-card">Bem vindo, {{ usuario }}</h1>
-      <button class="btn" @click="logout">Deslogar</button>
+  <div class="card">
+    <h1 class="title-card">Bem vindo, {{ usuario }}</h1>
+
+    <div class="btn btn-config">
+      <router-link to="/user/configurations">Configurações</router-link>
     </div>
 
+    <button class="btn btn-login" @click="logout">Deslogar</button>
+  </div>
 </template>
 
 <script>
@@ -31,7 +34,11 @@ export default {
 </script>
 
 <style scoped>
-.btn {
+.btn-login {
   background-color: #f34273;
+}
+
+.btn-config {
+  text-align: center;
 }
 </style>
